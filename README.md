@@ -1,0 +1,87 @@
+# Introduction
+
+This repository contains `vcs` files which can be used with the ROS tool `vcs` to clone and maintain multiple repositories in a single ROS workspace.
+
+Most cisst/SAW components use multiple git repositories so we provide some `vcs` files to automatically find the repositories (and versions) needed for each SAW component.
+
+In general, the `vcs` command will look like:
+```bash
+ vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros<1|2>-<component>-<branch|tag>.vcs
+```
+
+You will have to edit the URL based on the ROS version, component and branch or version.  For example, for ROS2 sawAtracsysFusionTrack devel branch, the command line would be:
+```bash
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
+```
+
+Note that if you need multiple SAW components in the same workspace, you need to first make sure the versions of all the dependencies for each component match.  In general, the `devel` branches should be compatible.  You can then use multiple calls to `vcs`:
+```bash
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-universal-robot-devel.vcs
+```
+
+# Compilation
+
+## ROS1
+
+We recommend to use `catkin_build`.
+
+### Requirements
+
+* Ubuntu 18.04:
+  ```bash
+  sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python-vcstool python-catkin-tools clang
+  ```
+* Ubuntu 20.04:
+  ```bash
+  sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev python3-vcstool python3-catkin-tools python3-osrf-pycommon
+  ```
+
+### Download and compile
+
+:warning: Ubuntu 18.04 support requires clang instead of gcc.  You will need to configure your workspace using: `catkin config --cmake-args -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_BUILD_TYPE=Release`
+
+```sh
+source /opt/ros/noetic/setup.bash # or melodic
+mkdir ~/catkin_ws
+cd ~/catkin_ws
+catkin init
+catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
+mkdir src
+cd src
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros1-<component>-<branch|tag>.vcs
+catkin build --summary
+source ~/catkin_ws/devel/setup.bash
+```
+
+## ROS 2
+
+### Requirements
+
+This has to be done once per computer.  Install ROS 2 following instructions from www.ros.org.  The following two packages might not be installed by default:
+```sh
+sudo apt install python3-vcstool python3-colcon-common-extensions python3-pykdl
+```
+
+For cisst/SAW, you will also need the following Ubuntu packages:
+* Ubuntu 20.04:
+  ```sh
+  sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev ros-galactic-joint-state-publisher* ros-galactic-xacro
+  ```
+* Ubuntu 22.04:
+  ```sh
+  sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev gfortran-9 ros-humble-joint-state-publisher* ros-humble-xacro
+  ```
+
+### Download and compile
+
+Create your ROS 2 workspace and clone all repositories using `vcs`:
+```bash
+source /opt/ros/galactic/setup.bash # or humble, iron...
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-<component>-<branch|tag>.vcs
+cd ~/ros2_ws
+colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+source ~/ros2_ws/install/setup.bash
+```
