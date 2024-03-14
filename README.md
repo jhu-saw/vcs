@@ -24,7 +24,7 @@ vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/mai
 
 ## ROS1
 
-We recommend to use `catkin_build`.
+We recommend to use `catkin build`.  Some of the cisst/SAW packages might not compile properly if you're using `catkin_make`.
 
 ### Requirements
 
