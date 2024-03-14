@@ -13,7 +13,7 @@ repositories:
     version: devel
   cisst-saw/sawUniversalRobot:
     type: git
-    url: https://github.com/jhu-dvrk/sawUniversalRobot.git
+    url: https://github.com/jhu-saw/sawUniversalRobot.git
     version: devel
   crtk/crtk_msgs:
     type: git
