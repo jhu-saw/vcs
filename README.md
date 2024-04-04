@@ -22,6 +22,12 @@ vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/mai
 
 # Compilation
 
+## :warning: Python and environment variables
+
+ROS uses Python extensively for the build process.  Make sure you use the default Python and deactivate any local Python install (`which python` should return `/usr/bin/python`).  This is a common issue with virtualenv and anaconda.
+
+You should also make sure your ROS environment variables match the workspace and ROS version you're using (check with `env | grep -i ros`).  If your environment variables are incorrect, you might want to edit either `~/.bashrc` or `~/.profile` and logout for the changes to take effect.
+
 ## ROS1
 
 We recommend to use `catkin build`.  Some of the cisst/SAW packages might not compile properly if you're using `catkin_make`.
@@ -34,7 +40,7 @@ We recommend to use `catkin build`.  Some of the cisst/SAW packages might not co
   ```
 * Ubuntu 20.04:
   ```bash
-  sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev python3-vcstool python3-catkin-tools python3-osrf-pycommon
+  sudo apt install libxml2-dev libraw1394-dev libncurses5-dev qtcreator swig sox espeak cmake-curses-gui cmake-qt-gui git subversion gfortran libcppunit-dev libqt5xmlpatterns5-dev libbluetooth-dev libhidapi-dev python3-pyudev python3-vcstool python3-catkin-tools python3-osrf-pycommon python-is-python3
   ```
 
 ### Download and compile
@@ -58,7 +64,7 @@ source ~/catkin_ws/devel/setup.bash
 
 ### Requirements
 
-This has to be done once per computer.  Install ROS 2 following instructions from www.ros.org.  The following two packages might not be installed by default:
+This has to be done once per computer.  Install ROS 2 following instructions from www.ros.org.  The following packages might not be installed by default:
 ```sh
 sudo apt install python3-vcstool python3-colcon-common-extensions python3-pykdl
 ```
