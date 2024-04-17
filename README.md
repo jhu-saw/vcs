@@ -6,27 +6,31 @@ Most cisst/SAW components use multiple git repositories so we provide some `vcs`
 
 In general, the `vcs` command will look like:
 ```bash
- vcs import --workers 1 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros<1|2>-<component>-<branch|tag>.vcs
+ vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros<1|2>-<component>-<branch|tag>.vcs
 ```
 
 You will have to edit the URL based on the ROS version, component and branch or version.  For example, for ROS2 sawAtracsysFusionTrack devel branch, the command line would be:
 ```bash
-vcs import --workers 1 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
 ```
 
 Note that if you need multiple SAW components in the same workspace, you need to first make sure the versions of all the dependencies for each component match.  In general, the `devel` branches should be compatible.  You can then use multiple calls to `vcs`:
 ```bash
-vcs import --workers 1 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
-vcs import --workers 1 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-universal-robot-devel.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-universal-robot-devel.vcs
 ```
+
+
+> **:warning: connection reset by peer**
+>
+> `vcs` will sometime fail with some ssh related errors.  If that happen, you might want to add the command line options `--workers 1 --retry 10`.  For example: `vcs import --workers 1 --retry 10 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-dvrk-devel.vcs`
 
 # Compilation
 
-## :warning: Python and environment variables
-
-ROS uses Python extensively for the build process.  Make sure you use the default Python and deactivate any local Python install (`which python` should return `/usr/bin/python`).  This is a common issue with virtualenv and anaconda.
-
-You should also make sure your ROS environment variables match the workspace and ROS version you're using (check with `env | grep -i ros`).  If your environment variables are incorrect, you might want to edit either `~/.bashrc` or `~/.profile` and logout for the changes to take effect.
+> **:warning: Python and environment variables**
+> 
+> ROS uses Python extensively for the build process.  Make sure you use the default Python and deactivate any local Python install (`which python` should return `/usr/bin/python`).  This is a common issue with virtualenv and anaconda.<br>
+> You should also make sure your ROS environment variables match the workspace and ROS version you're using (check with `env | grep -i ros`).  If your environment variables are incorrect, you might want to edit either `~/.bashrc` or `~/.profile` and logout for the changes to take effect.
 
 ## ROS1
 
@@ -55,7 +59,7 @@ catkin init
 catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 mkdir src
 cd src
-vcs import --workers 1 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros1-<component>-<branch|tag>.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros1-<component>-<branch|tag>.vcs
 catkin build --summary
 source ~/catkin_ws/devel/setup.bash
 ```
@@ -86,7 +90,7 @@ Create your ROS 2 workspace and clone all repositories using `vcs`:
 source /opt/ros/galactic/setup.bash # or humble, iron...
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
-vcs import --workers 1 --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-<component>-<branch|tag>.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-<component>-<branch|tag>.vcs
 cd ~/ros2_ws
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 source ~/ros2_ws/install/setup.bash
