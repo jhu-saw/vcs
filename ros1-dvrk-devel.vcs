@@ -51,9 +51,9 @@ repositories:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_video.git
     version: devel
-  dvrk/dvrk_camera_calibration:
+  dvrk/dvrk_camera_registration:
     type: git
-    url: https://github.com/jhu-dvrk/dvrk_camera_calibration.git
+    url: https://github.com/jhu-dvrk/dvrk_camera_registration.git
     version: main
   dvrk/dvrk_matlab:
     type: git
