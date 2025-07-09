@@ -71,7 +71,3 @@ repositories:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_config_jhu.git
     version: devel
-  dvrk/dESSJ-firmware:
-    type: git
-    url: https://github.com/jhu-dvrk/dESSJ-firmware.git
-    version: devel
