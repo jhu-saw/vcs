@@ -9,17 +9,18 @@ In general, the `vcs` command will look like:
  vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros<1|2>-<component>-<branch|tag>.vcs
 ```
 
-You will have to edit the URL based on the ROS version, component and branch or version.  For example, for ROS2 sawAtracsysFusionTrack devel branch, the command line would be:
+You will have to edit the URL based on the ROS version, component and branch or version.  For example, for ROS2 sawAtracsysFusionTrack main branch, the command line would be:
 ```bash
-vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-main.vcs
 ```
 
-Note that if you need multiple SAW components in the same workspace, you need to first make sure the versions of all the dependencies for each component match.  In general, the `devel` branches should be compatible.  You can then use multiple calls to `vcs`:
+Note that if you need multiple SAW components in the same workspace, you need to first make sure the versions of all the dependencies for each component match.  In general, the `main` and `devel` branches should be compatible.  You can then use multiple calls to `vcs`:
 ```bash
-vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-devel.vcs
-vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-universal-robot-devel.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-atracsys-main.vcs
+vcs import --recursive --input https://raw.githubusercontent.com/jhu-saw/vcs/main/ros2-universal-robot-main.vcs
 ```
 
+By convention, the `main` branch should be stable and all new features should be included in the next release. It is updated between releases (tagged) so users can use a recent version of the code. The `devel` branches might contain code that has not been tested or might not be included in the next release.
 
 > **:warning: connection reset by peer**
 >
