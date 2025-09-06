@@ -96,3 +96,29 @@ cd ~/ros2_ws
 colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
 source ~/ros2_ws/install/setup.bash
 ```
+
+# VCS commands
+
+All these commands should be used in your source (`src/`) directory!
+
+* To update all the repositories in your source directory:
+  ```sh
+  vcs pull
+  ```
+* To see all the local changes across repositories:
+  ```sh
+  vcs status -s
+  ```
+* After you commit all your changes, you can make sure all are pushed to their remote:
+  ```sh
+  vcs push
+  ```
+* A bit more advanced, assuming all your repositories have a main and a devel branch, you can toggle back and forth:
+  ```sh
+  # move all to devel and update
+  vcs custom --git --args checkout devel
+  vcs pull
+  # back to main
+  vcs custom --git --args checkout main
+  vcs pull
+  ```
