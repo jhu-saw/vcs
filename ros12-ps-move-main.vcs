@@ -1,0 +1,21 @@
+repositories:
+  cisst-saw/cisstNetlib:
+    type: git
+    url: https://github.com/jhu-cisst/cisstNetlib.git
+    version: main
+  cisst-saw/cisst:
+    type: git
+    url: https://github.com/jhu-cisst/cisst.git
+    version: main
+  cisst-saw/cisst-ros:
+    type: git
+    url: https://github.com/jhu-cisst/cisst-ros.git
+    version: main
+  cisst-saw/sawPSMove:
+    type: git
+    url: https://github.com/jhu-saw/sawPSMove.git
+    version: main
+  crtk/crtk_msgs:
+    type: git
+    url: https://github.com/collaborative-robotics/crtk_msgs.git
+    version: main
