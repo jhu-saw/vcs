@@ -14,11 +14,11 @@ repositories:
   cisst-saw/sawKeyboard:
     type: git
     url: https://github.com/jhu-saw/sawKeyboard.git
-    version: 1.4.0
+    version: 1.4.1
   cisst-saw/sawTextToSpeech:
     type: git
     url: https://github.com/jhu-saw/sawTextToSpeech.git
-    version: 1.4.0
+    version: 1.4.1
   cisst-saw/sawRobotIO1394:
     type: git
     url: https://github.com/jhu-saw/sawRobotIO1394.git
