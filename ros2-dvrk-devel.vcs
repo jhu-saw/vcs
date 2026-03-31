@@ -71,9 +71,9 @@ repositories:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_config_jhu.git
     version: devel
-  dvrk/dvrk_stereo_viewer:
+  dvrk/dvrk_display:
     type: git
-    url: https://github.com/jhu-dvrk/dvrk_stereo_viewer.git
+    url: https://github.com/jhu-dvrk/dvrk_display.git
     version: devel
   data_collection:
     type: git
