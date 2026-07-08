@@ -71,11 +71,11 @@ repositories:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_config_jhu.git
     version: devel
-  dvrk/dvrk_display:
+  dvrk/dvrk_console:
     type: git
-    url: https://github.com/jhu-dvrk/dvrk_display.git
+    url: https://github.com/jhu-dvrk/dvrk_console.git
     version: devel
-  data_collection:
+  dvrk/dvrk_data:
     type: git
-    url: https://github.com/jhu-dvrk/data_collection.git
+    url: https://github.com/jhu-dvrk/dvrk_data.git
     version: devel
