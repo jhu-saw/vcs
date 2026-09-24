@@ -62,7 +62,7 @@ repositories:
   dvrk/dvrk_simulator_base:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_simulator_base.git
-    version: main
+    version: devel
   dvrk/rqt_dvrk:
     type: git
     url: https://github.com/jhu-dvrk/rqt_dvrk.git
