@@ -47,6 +47,26 @@ repositories:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_python.git
     version: devel
+  dvrk/dvrk_arm_description:
+    type: git
+    url: https://github.com/jhu-dvrk/dvrk_arm_description.git
+    version: devel
+  dvrk/dvrk_isaac_sim:
+    type: git
+    url: https://github.com/jhu-dvrk/dvrk_isaac_sim.git
+    version: devel
+  dvrk/dvrk_pybullet:
+    type: git
+    url: https://github.com/adeguet1/dvrk_pybullet.git
+    version: devel
+  dvrk/dvrk_simulator_base:
+    type: git
+    url: https://github.com/adeguet1/dvrk_simulator_base.git
+    version: main
+  dvrk/rqt_dvrk:
+    type: git
+    url: https://github.com/adeguet1/rqt_dvrk.git
+    version: devel
   dvrk/dvrk_video:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_video.git
