@@ -43,13 +43,25 @@ repositories:
     type: git
     url: https://github.com/collaborative-robotics/ros2_crtk_matlab_client.git
     version: devel
+  dvrk/dvrk_arm_description:
+    type: git
+    url: https://github.com/jhu-dvrk/dvrk_arm_description.git
+    version: devel
+  dvrk/rqt_dvrk:
+    type: git
+    url: https://github.com/jhu-dvrk/rqt_dvrk.git
+    version: devel
   dvrk/dvrk_python:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_python.git
     version: devel
-  dvrk/dvrk_arm_description:
+  dvrk/dvrk_simulator_base:
     type: git
-    url: https://github.com/jhu-dvrk/dvrk_arm_description.git
+    url: https://github.com/jhu-dvrk/dvrk_simulator_base.git
+    version: devel
+  dvrk/dvrk_newton:
+    type: git
+    url: https://github.com/jhu-dvrk/dvrk_newton.git
     version: devel
   dvrk/dvrk_isaac_sim:
     type: git
@@ -58,14 +70,6 @@ repositories:
   dvrk/dvrk_pybullet:
     type: git
     url: https://github.com/jhu-dvrk/dvrk_pybullet.git
-    version: devel
-  dvrk/dvrk_simulator_base:
-    type: git
-    url: https://github.com/jhu-dvrk/dvrk_simulator_base.git
-    version: devel
-  dvrk/rqt_dvrk:
-    type: git
-    url: https://github.com/jhu-dvrk/rqt_dvrk.git
     version: devel
   dvrk/dvrk_video:
     type: git
